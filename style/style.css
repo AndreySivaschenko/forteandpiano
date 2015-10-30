@@ -1325,6 +1325,7 @@ background: #000;
 	height: 48px;
 	width: 48px; 
 	background:url(../img/soc-sprite-login.png) no-repeat center;
+	background: transparent 31;	
 
 }
 
@@ -1339,4 +1340,38 @@ background: #000;
 }
 .a-soc a.s-od{
 	background-position: -144px 0;
+}
+.eror_avtoriz{ 
+display: block; 
+height: 23px; 
+color: #ff0000;
+text-align: center;  
+font-style: 'Lobster'; 
+padding-top: 6px; 
+padding-left: 9px; 
+margin-bottom: 15px; 
+-webkit-border-radius: 5px 5px 5px 5px; 
+-moz-border-radius: 5px 5px 5px 5px; 
+-o-border-radius: 5px 5px 5px 5px; 
+border-radius: 5px 5px 5px 5px; 
+border:2px solid #ccc; 
+} 
+
+.exit{ 
+margin-top: 1px; 
+margin-right: 3px; 
+background: transparent; 
+float: right; 
+font-size: 25px; 
+border: none; 
+outline: none; 
+color: #ccc; 
+width: 25px; 
+height: 25px; 
+cursor: pointer; 
+} 
+
+.exit:hover{ 
+color:#000; 
+transition:0.3s; 
 }
