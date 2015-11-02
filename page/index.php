@@ -1,6 +1,6 @@
 ﻿<?php
-include_once '/page/header.php';	
-require_once '/page/header.php';
+	include_once 'header.php';
+	
 ?>
 
 				<div class="sorting center clearfix">

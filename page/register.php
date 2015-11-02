@@ -4,11 +4,11 @@
 			<form method="POST" action="/account/register">
 			<div class="avtoriz">
 				<label for="E-mail">E-mail</label>
-				<input type="text" name="E-mail" id="E-mail">
+				<input type="text" name="email" id="E-mail">
 			</div>
 			<div class="avtoriz">
 				<label for="pass">Пароль</label>
-				<input type="password" name="pass" id="pass">
+				<input type="password" name="password" id="pass">
 			</div>	
 			<div class="avtoriz">
 				<img src="resource/captcha.php" alt="Каптча">

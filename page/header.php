@@ -1,4 +1,17 @@
- <!DOCTYPE html>
+<?php
+if($_SESSION['USER_LOGIN_IN']!=1)
+	$Menu = '<div class="login">
+						<a href="#"id="login_btn">Login</a>
+						<span>|</span>
+						<a href="#" id="reg_btn">Register</a>
+					</div>';
+else
+	$Menu = '<div class="login">
+						<a href="#"id="login_btn">Личный кабинет</a>
+						<span>|</span>
+						<a href="/account/logout" id="reg_btn">Выход</a>
+					</div>';
+echo '<!DOCTYPE html>
 <html>
 	<head>
 		<title>Первая верстка магазина</title>
@@ -8,7 +21,7 @@
 		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<script type="text/javascript" src="/js/cusel-min-2.5.js"></script>
 		<link rel="stylesheet" href="style/style.css">
-		<link href='https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
 		<script>
 			  $(function() {
 			    $( "#slider-range" ).slider({
@@ -49,25 +62,28 @@
 					<div class="basket">
 						<a href=""><span>Cart (2)</span></a>
 					</div>
-					<div class="login">
-						<a href="#"id="login_btn">Login</a>
-						<span>|</span>
-						<a href="#" id="reg_btn">Register</a>
-					</div>
+					'.$Menu.'
 					<div id="popup">
 						<div class="a-forms">
 						<span>Авторизация</span>
+						<form method="POST" action="/account/login"> 
 							<div class="avtoriz">
 								<label for="E-mail">E-mail</label>
-								<input type="text" name="E-mail" id="E-mail">
+								<input type="text" name="email" id="E-mail">
 							</div>
 								<div class="avtoriz">
 								<label for="pass">Пароль</label>
-								<input type="password" name="pass" id="pass">
+								<input type="password" name="log_password" id="pass">
 							</div>
 								<div class="avtoriz">
-								<input type="submit" value="Вход">
+								<label for="rem">Остаться в сети</label>
+								<input type="checkbox" name="remember" id="rem">
 							</div>
+								
+								<div class="avtoriz">
+								<input type="submit" name="enter" value="Вход">
+							</div>
+							</form>
 						</div>
 						<div class="a-soc">
 							<h2>Авторизоваться с помощью соц. сетей</h2><br>
@@ -81,18 +97,18 @@
 					</div>
 					<div id="hover"></div>
 
-					<?php require_once '/page/register.php';?>
-					<!--	<div id="popup_reg">
+					
+						<div id="popup_reg">
 						<div class="af_reg">
 						<span>Регистрация</span>
 						<form method="POST" action="/account/register">
 						<div class="avtoriz">
 								<label for="E-mail">E-mail</label>
-								<input type="text" name="E-mail" id="E-mail">
+								<input type="text" name="email" id="E-mail">
 							</div>
 								<div class="avtoriz">
 								<label for="pass">Пароль</label>
-								<input type="password" name="pass" id="pass">
+								<input type="password" name="password" id="pass">
 							</div>	
 							<div class="avtoriz">
 								<img src="resource/captcha.php" alt="Каптча">
@@ -106,7 +122,7 @@
 							</div>
 						</form>
 						</div>
-					</div>-->
+					</div>
 					
 					<div id="hover"></div>
 
@@ -145,4 +161,5 @@
 								</ul>
 						</div>
 					</div>
-				</div>'
+				</div>';
+				?>

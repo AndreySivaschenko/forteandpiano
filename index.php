@@ -24,7 +24,8 @@ if($Page =='index' and $Module=='index')
 	include('page/index.php');
 else if ($Page=='account')
 	include('form/account.php');
-
+else if($Page=='login')
+	include('page/login.php');
 function MessageSend($p1,$p2,$p3=''){
 	if ($p1 == 1)
 		$p1='Ошибка';
@@ -49,5 +50,13 @@ function GeneratePassword($p1,$p2){
 }
 function FormChars($p1){
 	return nl2br(htmlspecialchars(trim($p1), ENT_QUOTES),fales);
+}
+function ULogin($p1){
+	if($p1 <= 0 and $_SESSION['USER_LOGIN_IN']!=$p1){
+		MessageSend(1, 'Данная страница только доступна только для гостей!', '/');
+	}
+	else if($_SESSION['USER_LOGIN_IN']!=$p1){
+		MessageSend(1, 'Данная страница доступна только для зарегестрированных пользователей!','/');
+	}
 }
 ?>

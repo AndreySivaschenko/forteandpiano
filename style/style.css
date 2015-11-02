@@ -1162,7 +1162,7 @@ margin-bottom:3px;
 #popup_reg{
 	display: none;
 	width: 350px;
-	height: 355px;
+	height: 300px;
 	position: absolute;
 	top:50%;
 	left: 50%;
@@ -1281,7 +1281,7 @@ margin-bottom:3px;
 .avtoriz input[type="submit"]{
 	float: left;
 	margin-left: 106px;
-	margin-top: 25px;
+	margin-top: 10px;
 	background: #cc3333;
 	border: none;
 	cursor: pointer;
