@@ -13,7 +13,13 @@
 						<li><a href="#">DANCE</a></li>
 						<li><a href="#">CLASSICAL</a></li>
 					</ul>
-					
+				<?php if (isset($errors)&&is_array($errors)):?>
+							<ul>
+							<?php foreach($errors as $error):?>
+								<li> - <?=$error;?></li>
+							<?php endforeach;?>
+							</ul>
+						<?php endif;?>	
 				<div class="s-list">
 					<a href="#" class="ic-squares">&nbsp;</a>
 					<a href="#" class="ic-list">&nbsp;</a>
@@ -71,15 +77,7 @@
 					</div><!--Product-catalog-->
 
 					<div class="pagination">
-						<ul class="clearfix">
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">6</a></li>
-							<li><a href="#">&raquo;</a></li>
-						</ul>
+						<?= $pagination->get();?>
 					</div>
 				</div><!--Content-->
 			</div><!--Middle-->

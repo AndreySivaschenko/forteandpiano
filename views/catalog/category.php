@@ -49,7 +49,7 @@
 								<a href="/product/<?php echo $product['id'] ?>"><img src="/template/img/desc_img.png" width="220px" height="220px"></a>
 							</div>
 								<div class="p-footer">
-										<h6><a href="/product/<?php echo $product['id'] ?>"><?php echo $product['title'];?></a> <span>by <?php echo $product['brand'];?></span></h6>
+										<h6><a href="/product/<?php echo $product['id'] ?>"><?php echo $product['title']." ".$product['id'];?></a> <span>by <?php echo $product['brand'];?></span></h6>
 										<div class="rate">
 											<div style="width:80%;"></div>
 										</div>
@@ -73,15 +73,7 @@
 					</div><!--Product-catalog-->
 
 					<div class="pagination">
-						<ul class="clearfix">
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">6</a></li>
-							<li><a href="#">&raquo;</a></li>
-						</ul>
+						<?= $pagination->get()?>
 					</div>
 				</div><!--Content-->
 			</div><!--Middle-->

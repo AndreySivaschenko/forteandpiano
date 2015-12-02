@@ -74,7 +74,7 @@
 				</div>
 			</div>
 			</div>
-<script type="text/javascript">
+<!--<script type="text/javascript">
 	$(document).ready(function(){
 		$('#login_btn').click(function(){
 			$('#popup').show(300);
@@ -101,7 +101,7 @@
 		});
 
 	});
-</script>
+</script>-->
 	</body>
 </html>
 

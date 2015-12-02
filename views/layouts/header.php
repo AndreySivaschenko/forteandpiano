@@ -1,24 +1,30 @@
 <?php
-
 $count = Cart::countItems();
-function Head($p1)
-{
-	//if($_SESSION['USER_LOGIN_IN']!=1)
 	$Menu = '<div class="login">
 						<a href="#"id="login_btn">Login</a>
 						<span>|</span>
-						<a href="#" id="reg_btn">Register</a>
+						<a href="/user/register/" >Register</a>
 					</div>';
-/*else
+/*function Head($p1)
+{
+	echo '<title>'.$p1.'</title>';
+	//if($_SESSION['USER_LOGIN_IN']!=1)
+else
 	$Menu = '<div class="login">
 						<span>Добро пожаловать '.$_SESSION['USER_EMAIL'].'</span> <a href="/personal_area"id="login_btn">Личный кабинет</a>
 						<span>|</span>
 						<a href="/account/logout" id="reg_btn">Выход</a>
-					</div>';*/
-echo '<!DOCTYPE html>
+
+					</div>';
+}*/
+?>
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>'.$p1.'</title>
+		<?php function Head($p1)
+		{
+		echo '<title>'.$p1.'</title>';
+		}?>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -26,7 +32,7 @@ echo '<!DOCTYPE html>
 		<script type="text/javascript" src="/template/js/cusel-min-2.5.js"></script>
 		<link rel="stylesheet" href="/template/style/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-		<script>
+		<!--<script>
 			  $(function() {
 			    $( "#slider-range" ).slider({
 			      range: true,
@@ -49,7 +55,7 @@ echo '<!DOCTYPE html>
 						}
 						cuSel(params);
 			  });
- 		 </script>
+ 		 </script>-->
 	</head>
 	<body>
 	<a  id ="home-link" href="#"></a>
@@ -66,11 +72,11 @@ echo '<!DOCTYPE html>
 					<div class="basket">
 						<a href=""><span>Cart ()</span></a>
 					</div>
-					'.$Menu.'
+					<?= $Menu?>
 					<div id="popup">
 						<div class="a-forms">
 						<span>Авторизация</span>
-						<form method="POST" action="/account/login"> 
+						<form method="POST" action="#"> 
 							<div class="avtoriz">
 								<label for="E-mail">E-mail</label>
 								<input type="text" name="email" id="E-mail">
@@ -105,17 +111,18 @@ echo '<!DOCTYPE html>
 						<div id="popup_reg">
 						<div class="af_reg">
 						<span>Регистрация</span>
-						<form method="POST" action="/account/register">
+
+						<form method="POST" action="/user/register">
 						<div class="avtoriz">
 								<label for="E-mail">E-mail</label>
-								<input type="text" name="email" id="E-mail">
+								<input type="text" name="email_reg" id="E-mail">
 							</div>
 								<div class="avtoriz">
 								<label for="pass">Пароль</label>
-								<input type="password" name="password" id="pass">
+								<input type="password" name="password_reg" id="pass">
 							</div>	
 							<div class="avtoriz">
-								<img src="resource/captcha.php" alt="Каптча">
+								<img src="/template/resource/captcha.php" alt="Каптча">
 							</div>
 								<div class="avtoriz">
 								<label for="captch">Каптча</label>
@@ -165,5 +172,4 @@ echo '<!DOCTYPE html>
 								</ul>
 						</div>
 					</div>
-				</div>';}
-				?>
+				</div>		

@@ -1224,7 +1224,9 @@ margin-bottom:3px;
 .af_reg{
 	float: left;
 	margin-top:15px;
-	margin-left: 22px;
+	margin-left: 50%;
+	margin-bottom: 50px;
+
 }
 
 .af_reg span{
