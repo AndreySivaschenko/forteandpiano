@@ -1,15 +1,17 @@
 <?php
 	include ROOT.'/views/layouts/header.php';
+	Head('Главная страница');
+	
 ?>
 
 				<div class="sorting center clearfix">
 					<ul class="s-category clearfix">
 						<li class="active"><a href="#">ALL</a></li>
-						<li><a href="#">Music</a></li>
-						<li><a href="#">Instrument</a></li>
-						<li><a href="#">Equipment</a></li>
-						<li><a href="#">Сlothing</a></li>
-						<li><a href="#">Accessories</a></li>
+						<li><a href="#">ROCK</a></li>
+						<li><a href="#">POP</a></li>
+						<li><a href="#">METAL</a></li>
+						<li><a href="#">DANCE</a></li>
+						<li><a href="#">CLASSICAL</a></li>
 					</ul>
 					
 				<div class="s-list">
@@ -30,7 +32,6 @@
 						</select>
 					</div>
 			</div>
-
 		<div class="middle center clearfix">
 				<?php 
 				include ROOT.'/views/layouts/sidebar.php';
@@ -43,7 +44,7 @@
 							<?php if($product['is_sale']):?>
 								<span class="sale">Sale</span>
 							<?php endif;?>
-								<a href="/product/<?php echo $product['id']?>"><img src="/template/img/desc_img.png" width="220px" height="220px"></a>
+								<a href="/product/<?php echo $product['id'] ?>"><img src="/template/img/desc_img.png" width="220px" height="220px"></a>
 							</div>
 								<div class="p-footer">
 										<h6><a href="/product/<?php echo $product['id'] ?>"><?php echo $product['title'];?></a> <span>by <?php echo $product['brand'];?></span></h6>
@@ -61,7 +62,7 @@
 										<span class="price"><?php echo $product['price'];?></span>
 										<span class="price-new"><?php echo $product['price'];?></span>
 										<?php endif;?>
-										<a href="#" data-id="<?php echo $product['id']?>" class="right addCart add-to-cart">ADD TO CARD</a>
+										<a href="/cart/add/<?php echo $product['id'];?>" id="add-cart" class="right addCart">ADD TO CARD</a>
 									</div>
 
 								</div><!--p-footer-->

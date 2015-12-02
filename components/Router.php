@@ -41,7 +41,6 @@ class Router
 				$parameters = $segments;
 				
 
-
 				//Подключения файл класса-контроллера
 				$controllerFile = ROOT.'/controllers/'.
 						$controllerName.'.php';
@@ -51,6 +50,7 @@ class Router
 				} 	
 				$controllerObject = new $controllerName;
 				$result =  call_user_func_array(array($controllerObject,$actionName),$parameters);
+				
 				if($result != null){
 					break;
 				}

@@ -74,37 +74,7 @@
 				</div>
 			</div>
 			</div>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-		<script type="text/javascript" src="/template/js/cusel-min-2.5.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-		<script type="text/javascript">
-
-			  $(function() {
-			    $( "#slider-range" ).slider({
-			      range: true,
-			      min: 0,
-			      max: 10000,
-			      values: [ 0, 10000 ],
-			      slide: function( event, ui ) {
-			        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-			      }
-			    });
-			    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-			      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-
-			 /* select style */
-					var params = {
-						changedEl: "select",
-						visRows: 5,
-						scrollArrows: true
-						}
-						cuSel(params);
-			  });
-
-
+<script type="text/javascript">
 	$(document).ready(function(){
 		$('#login_btn').click(function(){
 			$('#popup').show(300);
@@ -122,17 +92,15 @@
 			$('#hover').hide();
 			$('body').css('overflow','auto');
 		});
-		
-		$(".add-to-cart").click(function () {
-            var id = $(this).attr("data-id");
-            $.post("/cart/addAjax/"+id, {}, function (data) {
-                $("#cart-count").html(data);
-            });
-            return false;
-        });
-		
-	});
+		$('#add-cart').click(function(){
+			var id = $(this).attr("data-id");
+			$.post("/cart/addAjax/"+id,{},function(data){
+				$("#cart-count").html(data);
+			});
+			return false;
+		});
 
+	});
 </script>
 	</body>
 </html>
