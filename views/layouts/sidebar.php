@@ -20,7 +20,7 @@
 					<h4 class="s-title">CATEGORIES <span class="s-title-br"></span></h4>
 
 					<ul class="cat-lsit">
-						<li><a href="">Музыкальное инструменты</a></li>
+						<li><a href="/music_instruments">Музыкальное инструменты</a></li>
 						<li><a href="">Музыкальное оборудование</a></li>
 						<li><a href="">Одежда</a></li>
 						<li><a href="">Аксессуары</a></li>

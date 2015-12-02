@@ -1,4 +1,36 @@
-<div id="footer">
+<?php
+ include_once 'header.php';
+ Head('Личный кабинет');
+?>
+		<div class="middle center clearfix">
+				<div class="content">
+					<div class="product-catalog clearfix">
+						<div class="personalArea">
+							<div class="personal-header">
+							<span class="personalInfo-title">Личный Кабинет</span>
+							<span class="personalInfo-title">Отзывы о товарах</span>
+							</div>
+							<div class="personalInfo">
+								<ul>
+									<li><a href="#">Редактирование персональных данных</a></li>
+									<li><a href="#">История заказов</a></li>
+									<li><a href="#">Отслеживание посылок</a></li>
+									<li><a href="#">История запросов каталога</a></li>
+									<li><a href="#">Ваши отзывы</a></li>
+									<li><a href="#">Выход</a></li>
+								</ul>
+							</div>
+							<div class="MyReview">
+								<ul>
+									<li><a href="#">Мои отзывы</a></li>
+								</ul>
+							</div>
+						</div>
+					</div><!--Product-catalog-->
+				</div><!--Content-->
+			</div><!--Middle-->
+		</div><!--Wrapper-->
+		<div id="footer">
 		<a href="#home-link" class="home-link">&nbsp;</a>
 		<div class="center clearfix">
 				<div class="f-about">
@@ -73,3 +105,45 @@
 					</div>
 				</div>
 			</div>
+		</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#login_btn').click(function(){
+			$('#popup').show(300);
+			$('#hover').show();
+			$("html,body").css("overflow","hidden");
+		});
+		$('#reg_btn').click(function(){
+			$('#popup_reg').show(300);
+			$('#hover').show();
+			$("html,body").css("overflow","hidden");
+		});
+		$('#hover').click(function(){
+			$('#popup').hide();
+			$('#popup_reg').hide();
+			$('#hover').hide();
+			$('body').css('overflow','auto');
+		});
+
+	});
+</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

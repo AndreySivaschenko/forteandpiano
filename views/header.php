@@ -1,51 +1,26 @@
 <?php
-if($_SESSION['USER_LOGIN_IN']!=1)
+
+$count = Cart::countItems();
+function Head($p1)
+{
+	//if($_SESSION['USER_LOGIN_IN']!=1)
 	$Menu = '<div class="login">
 						<a href="#"id="login_btn">Login</a>
 						<span>|</span>
 						<a href="#" id="reg_btn">Register</a>
 					</div>';
-else
+/*else
 	$Menu = '<div class="login">
-						<a href="#"id="login_btn">Личный кабинет</a>
+						<span>Добро пожаловать '.$_SESSION['USER_EMAIL'].'</span> <a href="/personal_area"id="login_btn">Личный кабинет</a>
 						<span>|</span>
 						<a href="/account/logout" id="reg_btn">Выход</a>
-					</div>';
+					</div>';*/
 echo '<!DOCTYPE html>
 <html>
 	<head>
-		<title>Первая верстка магазина</title>
+		<title>'.$p1.'</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-		<script type="text/javascript" src="/js/cusel-min-2.5.js"></script>
-		<link rel="stylesheet" href="style/style.css">
-		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-		<script>
-			  $(function() {
-			    $( "#slider-range" ).slider({
-			      range: true,
-			      min: 0,
-			      max: 10000,
-			      values: [ 0, 10000 ],
-			      slide: function( event, ui ) {
-			        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-			      }
-			    });
-			    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-			      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-
-			 /* select style */
-					var params = {
-						changedEl: "select",
-						visRows: 5,
-						scrollArrows: true
-						}
-						cuSel(params);
-			  });
- 		 </script>
 	</head>
 	<body>
 	<a  id ="home-link" href="#"></a>
@@ -60,7 +35,7 @@ echo '<!DOCTYPE html>
 						<a href="#" class="s-vimeo">&nbsp;</a>
 					</div>
 					<div class="basket">
-						<a href=""><span>Cart (2)</span></a>
+						<a href=""><span>Cart ('.$count.')</span></a>
 					</div>
 					'.$Menu.'
 					<div id="popup">
@@ -131,8 +106,8 @@ echo '<!DOCTYPE html>
 				<!--Head-->
 				<div id="head" class="center clearfix">
 					<div id="logo" class="left">
-							<a href="#">
-								<img src="img/logo.png" alt="MStore" />
+							<a href="/">
+								<img src="/template/img/logo.png" alt="MStore" />
 								<span>Store</span>
 							</a>
 					</div>
@@ -161,5 +136,5 @@ echo '<!DOCTYPE html>
 								</ul>
 						</div>
 					</div>
-				</div>';
+				</div>';}
 				?>
