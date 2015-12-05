@@ -1,6 +1,7 @@
 <?php
+	
 	include ROOT.'/views/layouts/header.php';
-	Head('Главная страница');
+	Head('Музыкальные инструменты');
 	
 ?>
 

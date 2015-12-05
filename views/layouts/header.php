@@ -1,22 +1,7 @@
 <?php
 $count = Cart::countItems();
-	$Menu = '<div class="login">
-						<a href="/user/login/">Вход</a>
-						<span>|</span>
-						<a href="/user/register/" >Регистрация</a>
-					</div>';
-/*function Head($p1)
-{
-	echo '<title>'.$p1.'</title>';
-	//if($_SESSION['USER_LOGIN_IN']!=1)
-else
-	$Menu = '<div class="login">
-						<span>Добро пожаловать '.$_SESSION['USER_EMAIL'].'</span> <a href="/personal_area"id="login_btn">Личный кабинет</a>
-						<span>|</span>
-						<a href="/account/logout" id="reg_btn">Выход</a>
-
-					</div>';
-}*/
+$user = new User();
+$userEmail = $user->getUserById($user->checkLogged());
 ?>
 <!DOCTYPE html>
 <html>
@@ -72,39 +57,19 @@ else
 					<div class="basket">
 						<a href=""><span>Cart ()</span></a>
 					</div>
-					<?= $Menu?>
-					<div id="popup">
-						<div class="a-forms">
-						<span>Авторизация</span>
-						<form method="POST" action="#"> 
-							<div class="avtoriz">
-								<label for="E-mail">E-mail</label>
-								<input type="text" name="email" id="E-mail">
-							</div>
-								<div class="avtoriz">
-								<label for="pass">Пароль</label>
-								<input type="password" name="log_password" id="pass">
-							</div>
-								<div class="avtoriz">
-								<label for="rem">Остаться в сети</label>
-								<input type="checkbox" name="remember" id="rem">
-							</div>
-								
-								<div class="avtoriz">
-								<input type="submit" name="enter" value="Вход">
-							</div>
-							</form>
-						</div>
-						<div class="a-soc">
-							<h2>Авторизоваться с помощью соц. сетей</h2><br>
-							<div class="a-icon-soc">
-								<a href="#" class="s-vk">&nbsp;</a>
-								<a href="#" class="s-fb">&nbsp;</a>
-								<a href="#" class="s-google">&nbsp;</a>
-								<a href="#" class="s-od">&nbsp;</a>
-								</div>
-						</div>
+					<div class="login">
+					<?php if(User::isGuest()):?>
+						<a href="/user/login/">Вход</a>
+						<span>|</span>
+						<a href="/user/register/" >Регистрация</a>
+					<?php else:?>
+						<span>Добро пожаловать: <?= $userEmail['email'].' '; ?>|</span>
+						<a href="/cabinet/">Личный кабинет</a>
+						<span>|</span>
+						<a href="/user/logout/">Выход</a>
+					<?php endif;?>
 					</div>
+					
 					<div id="hover"></div>
 
 					

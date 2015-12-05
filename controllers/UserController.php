@@ -49,6 +49,8 @@ class UserController
 		$email = '';
 		$password = '';
 
+		$user = new User();
+		
 		if(isset($_POST['login_btn']))
 		{
 			$email = $_POST['login_email'];
@@ -63,22 +65,27 @@ class UserController
 				$errors[] = 'Пароль не должен быть короче 6-ти символов';
 
 			//Проверка существует ли пользователь
-			$userId = User::checkUserData($email, $password);
-
+			$userId = $user->checkUserData($email, $password);
+			$userProfile = $user->checkProfileData($userId);
 			if($userId == false){
 				$errors[]='Не верные данные для входа на сайт';
 			} 
 			else{
-				$user = new User();
 				$user->auth($userId);
+				if($userProfile==false){
+					header('Location: /cabinet/profile');
+				}
+				else
+					header('Location: /');
 			}
 		}
-
-
-
-
 		require_once(ROOT.'/views/user/login.php');
 		return true;
+	}
+	public function actionLogout()
+	{
+		unset($_SESSION['user']);
+		header('Location: /');
 	}
 
 
