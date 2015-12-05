@@ -1,9 +1,9 @@
 <?php
 $count = Cart::countItems();
 	$Menu = '<div class="login">
-						<a href="#"id="login_btn">Login</a>
+						<a href="/user/login/">Вход</a>
 						<span>|</span>
-						<a href="/user/register/" >Register</a>
+						<a href="/user/register/" >Регистрация</a>
 					</div>';
 /*function Head($p1)
 {

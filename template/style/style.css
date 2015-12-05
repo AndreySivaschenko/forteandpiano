@@ -108,6 +108,13 @@ a, a:hover {color: #000; text-decoration: none;}
 	padding: 7px;
 }
 
+.login_frm{
+	float: left;
+	height: 300px;
+	width: 1000px;
+	margin-left: 15%;
+}
+
 .login a,
 .login span {
 	color: #fff;

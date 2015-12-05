@@ -13,13 +13,7 @@
 						<li><a href="#">DANCE</a></li>
 						<li><a href="#">CLASSICAL</a></li>
 					</ul>
-				<?php if (isset($errors)&&is_array($errors)):?>
-							<ul>
-							<?php foreach($errors as $error):?>
-								<li> - <?=$error;?></li>
-							<?php endforeach;?>
-							</ul>
-						<?php endif;?>	
+				
 				<div class="s-list">
 					<a href="#" class="ic-squares">&nbsp;</a>
 					<a href="#" class="ic-list">&nbsp;</a>

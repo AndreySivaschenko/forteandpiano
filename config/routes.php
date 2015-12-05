@@ -9,6 +9,7 @@ return array(
 	'cart/addAjax/([0-9]+)'=>'cart/addAjax/$1',
 	'cart/add/([0-9]+)'=>'cart/add/$1',
 	'user/register'=>'user/register',
+	'user/login'=>'user/login',
 	'page-([0-9]+)'=>'site/index/$1',
 	'' => 'site/index',
 	//'news' => 'news/index',
