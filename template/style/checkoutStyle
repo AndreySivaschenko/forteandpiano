@@ -1,0 +1,35 @@
+.checkout_cart{
+	
+	line-height: 30px;
+}
+
+.checkout_cart label{
+	float: left;
+	padding-right: 15px;
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.checkout_cart textarea{
+	width:305px;
+	height:100px;
+	resize:none;
+	float:right;
+	outline: none;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	   -moz-border-radius: 5px 5px 5px 5px;
+	     -o-border-radius: 5px 5px 5px 5px;
+	        border-radius: 5px 5px 5px 5px;
+}
+
+.chk_btn input[type="submit"]{
+	float: right;
+	margin-top: 25px;
+	background: #cc3333;
+	border: none;
+	cursor: pointer;
+	color: #fff;
+	width: 100px;
+	height: 30px;
+}

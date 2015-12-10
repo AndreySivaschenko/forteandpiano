@@ -26,8 +26,12 @@
 								<input type="text" name="email" id="E-mail">
 							</div>
 							<div class="avtoriz">
-								<label for="pass">Пароль</label>
-								<input type="password" name="password" id="pass">
+								<label for="pass">Старый пароль</label>
+								<input type="password" name="o_password" id="pass">
+							</div>	
+							<div class="avtoriz">
+								<label for="pass">Новый пароль</label>
+								<input type="password" name="n_password" id="pass">
 							</div>	
 
 							<div class="avtoriz">

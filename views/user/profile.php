@@ -1,6 +1,6 @@
 <?php 
 	include ROOT.'/views/layouts/header.php';
-	Head('Marshall MG30');	
+	Head('Профиль');	
 ?>
 
 
@@ -9,7 +9,7 @@
 			
 					
 						<div class="af_reg">
-						<!--	<?php if($result):?>
+							<?php if($result):?>
 								<p>Данные сохранены</p>
 							<?php else:?>
 							<?php if(isset($errors)&&is_array($errors)):?>
@@ -18,7 +18,7 @@
 										<li> - <?=$error;?></li>
 									<?php endforeach;?>
 								</ul>
-							<?php endif;?>-->
+							<?php endif;?>
 							<span>Заполните профиль</span>
 							<form method="POST" action="#">
 							
@@ -52,14 +52,14 @@
 							</div>	
 							<div class="avtoriz">
 								<label for="pass">Индекс</label>
-								<input type="text" name="u_indexs" id="pass">
+								<input type="text" name="u_index" id="pass">
 							</div>	
 												
 							<div class="reg_btn">
-								<input type="submit" name="save_edit" value="Сохранить">
+								<input type="submit" name="add_profile" value="Сохранить">
 							</div>
 						</form>
-					<!--<?php endif;?>-->
+					<?php endif;?>
 					</div>		
 				
 	

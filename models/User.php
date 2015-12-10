@@ -22,6 +22,76 @@ class User
 
 		return $result->execute(); 
 	}
+
+	public function addProfile($name,$sname,$phone,$country,$region,$city,$address,$index,$userId) 
+	{
+		$db = Db::getConnection();
+
+		$sql = 'INSERT INTO `profile` (name,sname,phone,country,region,city,address,city_index,id_user)
+				VALUES(:name,:sname,:phone,:country,:region,:city,:address,:city_index,:id_user)';
+	
+		$result = $db->prepare($sql);
+		$result->bindParam(':name',$name,PDO::PARAM_STR);
+		$result->bindParam(':sname',$sname,PDO::PARAM_STR);
+		$result->bindParam(':phone',$phone,PDO::PARAM_STR);
+		$result->bindParam(':country',$country,PDO::PARAM_STR);
+		$result->bindParam(':region',$region,PDO::PARAM_STR);
+		$result->bindParam(':city',$city,PDO::PARAM_STR);
+		$result->bindParam(':address',$address,PDO::PARAM_STR);
+		$result->bindParam(':city_index',$index,PDO::PARAM_STR);
+		$result->bindParam(':id_user',$userId,PDO::PARAM_STR);
+
+		return $result->execute();
+
+	}
+	public static function checkName($name)
+	{
+		if(strlen($name)>=2)
+			return true;
+		return false;
+	}
+	public static function checkSname($sname)
+	{
+		if(strlen($sname)>=2)
+			return true;
+		return false;
+	}
+	public static function checkPhone($phone)
+	{
+		if(strlen($phone)>=7)
+			return true;
+		return false;
+	}
+	public static function checkCountry($country)
+	{
+		if(strlen($country)>=2)
+			return true;
+		return false;
+	}
+	public static function checkRegion($region)
+	{
+		if(strlen($region)>=2)
+			return true;
+		return false;
+	}
+	public static function checkCity($city)
+	{
+		if(strlen($city)>=2)
+			return true;
+		return false;
+	}
+	public static function checkAddress($address)
+	{
+		if(strlen($address)>=5)
+			return true;
+		return false;
+	}
+	public static function checkIndex($index)
+	{
+		if(strlen($index)>=4)
+			return true;
+		return false;
+	}
 	public static function checkEmail($email)
 	{
 		if(filter_var($email, FILTER_VALIDATE_EMAIL))
@@ -109,7 +179,12 @@ class User
 	{
 		if(isset($_SESSION['user']))
 			return $_SESSION['user'];
-		//header('Location: /user/login'); 
+		header('Location: /user/login'); 
+	}
+	public function isUser()
+	{
+		if(isset($_SESSION['user']))
+			return $_SESSION['user'];
 	}
 	public static function isGuest()
 	{

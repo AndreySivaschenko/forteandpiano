@@ -1,9 +1,7 @@
 <?php
 	include ROOT.'/views/layouts/header.php';
 	Head('Главная страница');
-	
 ?>
-
 				<div class="sorting center clearfix">
 					<ul class="s-category clearfix">
 						<li class="active"><a href="#">ALL</a></li>
@@ -62,7 +60,7 @@
 										<span class="price"><?php echo $product['price'];?></span>
 										<span class="price-new"><?php echo $product['price'];?></span>
 										<?php endif;?>
-										<a href="/cart/add/<?php echo $product['id'];?>" id="add-cart" class="right addCart">ADD TO CARD</a>
+										<a href="#" data-id="<?php echo $product['id']?>" class="right addCart add-to-cart">ADD TO CARD</a>
 									</div>
 
 								</div><!--p-footer-->

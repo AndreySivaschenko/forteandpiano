@@ -69,6 +69,37 @@ class Product
 		return $products;
 		}
 	}
+
+
+	public static function getProdustsByIds($idsArray)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Превращаем массив в строку для формирования условия в запросе
+        $idsString = implode(',', $idsArray);
+
+        // Текст запроса к БД
+        $sql = "SELECT * FROM product WHERE status='1' AND id IN ($idsString)";
+
+        $result = $db->query($sql);
+
+        // Указываем, что хотим получить данные в виде массива
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        
+        $i = 0;
+        $products = array();
+        while ($row = $result->fetch()) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['code'] = $row['code'];
+            $products[$i]['title'] = $row['title'];
+            $products[$i]['price'] = $row['price'];
+            $i++;
+        }
+        return $products;
+    }	
+
 	public static function getProductById($id)
 	{
 		$id = intval($id);

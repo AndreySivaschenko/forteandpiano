@@ -44,6 +44,62 @@ class UserController
 		return true;
 	
 	}
+	public function actionProfile()
+	{
+		$name = '';
+		$sname = '';
+		$phone = '';
+		$country = '';
+		$region = '';
+		$city = '';
+		$address = '';
+		$index = '';
+		$userId='';
+		$user = new User();
+
+		$result = false;
+
+		if(isset($_POST['add_profile']))
+		{
+			$name = $_POST['u_name'];
+			$sname = $_POST['u_sname'];
+			$phone = $_POST['u_phone'];
+			$country = $_POST['u_country'];
+			$region = $_POST['u_region'];
+			$city = $_POST['u_city'];
+			$address = $_POST['u_address'];
+			$index = $_POST['u_index'];
+			$userId = $user->getUserById($user->isUser());
+			$errors = false;
+
+			if(!User::checkName($name))
+				$errors[]='Имя должно быть более 2-х символов';
+			if(!User::checkSname($sname))
+				$errors[]='Фамилия должна быть более 2-х символов';
+			if(!User::checkPhone($phone))
+				$errors[]='Телефон должен быть более 7-ми символов';
+			if(!User::checkCountry($country))
+				$errors[]='Страна должна быть более 2-х символов';
+			if(!User::checkRegion($region))
+				$errors[]='Область должна быть более 2-х символов';
+			if(!User::checkCity($city))
+				$errors[]='Город должен быть более 2-х символов';
+			if(!User::checkAddress($address))
+				$errors[]='Адрес должен быть более 5-ти символов';
+			if(!User::checkIndex($index))
+				$errors[]='Индекс должен быть более 4-х символов';
+
+			if($errors == false)
+			{
+				$result = $user->addProfile($name,$sname,$phone,$country,$region,$city,$address,$index,$userId['id']);
+				
+			}
+		}
+
+
+		require_once(ROOT.'/views/user/profile.php');
+		return true;
+	}
 	public function actionLogin()
 	{
 		$email = '';
@@ -73,7 +129,7 @@ class UserController
 			else{
 				$user->auth($userId);
 				if($userProfile==false){
-					header('Location: /cabinet/profile');
+					header('Location: /user/profile');
 				}
 				else
 					header('Location: /');
@@ -82,6 +138,7 @@ class UserController
 		require_once(ROOT.'/views/user/login.php');
 		return true;
 	}
+
 	public function actionLogout()
 	{
 		unset($_SESSION['user']);

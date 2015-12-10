@@ -1,46 +1,14 @@
 <?php
-$count = Cart::countItems();
 $user = new User();
-$userEmail = $user->getUserById($user->checkLogged());
+$userEmail = $user->getUserById($user->isUser());
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php function Head($p1)
-		{
-		echo '<title>'.$p1.'</title>';
-		}?>
+		<?php function Head($p1){echo '<title>'.$p1.'</title>';}?>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-		<script type="text/javascript" src="/template/js/cusel-min-2.5.js"></script>
 		<link rel="stylesheet" href="/template/style/style.css">
-		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-		<!--<script>
-			  $(function() {
-			    $( "#slider-range" ).slider({
-			      range: true,
-			      min: 0,
-			      max: 10000,
-			      values: [ 0, 10000 ],
-			      slide: function( event, ui ) {
-			        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-			      }
-			    });
-			    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-			      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-
-			 /* select style */
-					var params = {
-						changedEl: "select",
-						visRows: 5,
-						scrollArrows: true
-						}
-						cuSel(params);
-			  });
- 		 </script>-->
 	</head>
 	<body>
 	<a  id ="home-link" href="#"></a>
@@ -55,7 +23,10 @@ $userEmail = $user->getUserById($user->checkLogged());
 						<a href="#" class="s-vimeo">&nbsp;</a>
 					</div>
 					<div class="basket">
-						<a href=""><span>Cart ()</span></a>
+						<a href="/cart">
+							 <i class="fa fa-shopping-cart"></i> Cart
+                         (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)
+						</a>
 					</div>
 					<div class="login">
 					<?php if(User::isGuest()):?>
@@ -108,8 +79,7 @@ $userEmail = $user->getUserById($user->checkLogged());
 				<div id="head" class="center clearfix">
 					<div id="logo" class="left">
 							<a href="/">
-								<img src="/template/img/logo.png" alt="MStore" />
-								<span>Store</span>
+								<img src="/template/img/logo.png" style="width:250px;" alt="Forte And Piano" />
 							</a>
 					</div>
 					<!-- Nav-->

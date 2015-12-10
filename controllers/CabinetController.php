@@ -4,18 +4,13 @@ class CabinetController
 {
 	public function actionIndex()
 	{
+		$user = new User();
+		$userId = $user->checkLogged();
 		
 		require_once(ROOT.'/views/cabinet/index.php');
 		return true;
 	}
 
-	public function actionProfile()
-	{
-
-
-		require_once(ROOT.'/views/cabinet/profile.php');
-		return true;
-	}
 	public function actionEdit()
 	{
 

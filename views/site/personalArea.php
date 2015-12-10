@@ -1,4 +1,36 @@
-<div id="footer">
+<?php
+ include_once 'header.php';
+ Head('Личный кабинет');
+?>
+		<div class="middle center clearfix">
+				<div class="content">
+					<div class="product-catalog clearfix">
+						<div class="personalArea">
+							<div class="personal-header">
+							<span class="personalInfo-title">Личный Кабинет</span>
+							<span class="personalInfo-title">Отзывы о товарах</span>
+							</div>
+							<div class="personalInfo">
+								<ul>
+									<li><a href="#">Редактирование персональных данных</a></li>
+									<li><a href="#">История заказов</a></li>
+									<li><a href="#">Отслеживание посылок</a></li>
+									<li><a href="#">История запросов каталога</a></li>
+									<li><a href="#">Ваши отзывы</a></li>
+									<li><a href="#">Выход</a></li>
+								</ul>
+							</div>
+							<div class="MyReview">
+								<ul>
+									<li><a href="#">Мои отзывы</a></li>
+								</ul>
+							</div>
+						</div>
+					</div><!--Product-catalog-->
+				</div><!--Content-->
+			</div><!--Middle-->
+		</div><!--Wrapper-->
+		<div id="footer">
 		<a href="#home-link" class="home-link">&nbsp;</a>
 		<div class="center clearfix">
 				<div class="f-about">
@@ -31,7 +63,7 @@
 							<div class="f-populars">
 								<div class="s-products-item clearfix">
 								<div class="s-products-img">
-									<a href="#"><img src="/template/img/f-pop-img.png" alt="" /></a>
+									<a href="#"><img src="img/f-pop-img.png" alt="" /></a>
 								</div>
 								<div class="s-products-info">
 									<h6><a href="#">Great Album</a></h6>
@@ -41,7 +73,7 @@
 
 							<div class="s-products-item clearfix">
 								<div class="s-products-img">
-									<a href="#"><img src="/template/img/f-pop-img2.png" alt="" /></a>
+									<a href="#"><img src="img/f-pop-img2.png" alt="" /></a>
 								</div>
 								<div class="s-products-info">
 									<h6><a href="#">Great Album</a></h6>
@@ -73,39 +105,8 @@
 					</div>
 				</div>
 			</div>
-			</div>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-		<script type="text/javascript" src="/template/js/cusel-min-2.5.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-		<script type="text/javascript">
-
-			 /* slider style */
-			  $(function() {
-			    $( "#slider-range" ).slider({
-			      range: true,
-			      min: 0,
-			      max: 10000,
-			      values: [ 0, 10000 ],
-			      slide: function( event, ui ) {
-			        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-			      }
-			    });
-			    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-			      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-
-			 /* select style */
-					var params = {
-						changedEl: "select",
-						visRows: 5,
-						scrollArrows: true
-						}
-						cuSel(params);
-			  });
-
-
+		</div>
+<script type="text/javascript">
 	$(document).ready(function(){
 		$('#login_btn').click(function(){
 			$('#popup').show(300);
@@ -123,20 +124,23 @@
 			$('#hover').hide();
 			$('body').css('overflow','auto');
 		});
-		
-		$(".add-to-cart").click(function () {
-            var id = $(this).attr("data-id");
-            $.post("/cart/addAjax/"+id, {}, function (data) {
-                $("#cart-count").html(data);
-            });
-            return false;
-        });
-		
-	});
 
+	});
 </script>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
