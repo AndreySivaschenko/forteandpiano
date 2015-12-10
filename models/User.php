@@ -42,6 +42,46 @@ class User
 		$result->bindParam(':id_user',$userId,PDO::PARAM_STR);
 
 		return $result->execute();
+	}
+	public function edit($id,$email,$password,$npassword,$name,$sname,$phone,$country,$region,$city,$address,$city_index)
+	{
+		$db = Db::getConnection();
+		
+		$npassword = self::generationPassword($npassword);
+		
+		if($npassword)
+		{
+			$sql = 'UPDATE `users` 
+				SET `email` = :email, password = :npassword
+				WHERE `id` = :id;
+				UPDATE `profile`
+				SET `name` = :name, `sname` = :sname, `phone` = :phone, `country` = :country, `region` = :region, `city` = :city, `address` = :address, `city_index` = :city_index
+				WHERE `id_user` = :id;';
+		}
+		else{
+			$sql = 'UPDATE `users` 
+					SET `email` = :email, password = :password
+					WHERE `id` = :id;
+					UPDATE `profile`
+					SET `name` = :name, `sname` = :sname, `phone` = :phone, `country` = :country, `region` = :region, `city` = :city, `address` = :address, `city_index` = :city_index
+					WHERE `id_user` = :id;';
+			}
+
+		$result = $db->prepare($sql);
+		$result->bindParam(':id',$id,PDO::PARAM_INT);
+		$result->bindParam(':email', $email, PDO::PARAM_STR);
+		$result->bindParam(':password',$password ,PDO::PARAM_STR);
+		$result->bindParam(':npassword',$npassword,PDO::PARAM_STR);
+		$result->bindParam(':name',$name,PDO::PARAM_STR);
+		$result->bindParam(':sname',$sname,PDO::PARAM_STR);
+		$result->bindParam(':phone',$phone,PDO::PARAM_STR);
+		$result->bindParam(':country',$country,PDO::PARAM_STR);
+		$result->bindParam(':region',$region,PDO::PARAM_STR);
+		$result->bindParam(':city',$city,PDO::PARAM_STR);
+		$result->bindParam(':address',$address,PDO::PARAM_STR);
+		$result->bindParam(':city_index',$city_index,PDO::PARAM_STR);
+
+		return $result->execute();
 
 	}
 	public static function checkName($name)
@@ -97,6 +137,13 @@ class User
 		if(filter_var($email, FILTER_VALIDATE_EMAIL))
 			return true;
 		
+		return false;
+	}
+	//Проверка пароля на схожость 
+	public function checkedPassword($uPass,$pass)
+	{
+		if($uPass == self::generationPassword($pass))
+			return true;
 		return false;
 	}
 	public static function checkPassword($password)
@@ -208,5 +255,23 @@ class User
 
 			return $result->fetch();
 		}
+	}
+	public function getProfileByUserId($userId)
+	{
+		if($userId)
+		{
+			$db = Db::getConnection();
+			$sql = 'SELECT *
+					FROM `profile`
+					WHERE `id_user` = :userId';
+
+			$result = $db->prepare($sql);
+			$result->bindParam(':userId', $userId,PDO::PARAM_INT);
+			$result->setFetchMode(PDO::FETCH_ASSOC);
+			$result->execute();
+
+			return $result->fetch();
+		}
+
 	}
 }

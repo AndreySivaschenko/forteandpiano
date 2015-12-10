@@ -37,6 +37,7 @@ public function actionIndex()
 
 public function actionCheckout()
     {
+        $user = new User();
         // Получием данные из корзины      
         $productsInCart = Cart::getProducts();
 
@@ -66,8 +67,8 @@ public function actionCheckout()
         if (!User::isGuest()) {
             // Если пользователь не гость
             // Получаем информацию о пользователе из БД
-            $userId = User::checkLogged();
-            $user = User::getUserById($userId);
+            $userId = $user->checkLogged();
+            $user = $user->getUserById($userId);
             $userName = $user['email'];
         } else {
             // Если гость, поля формы останутся пустыми

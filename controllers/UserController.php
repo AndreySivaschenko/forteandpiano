@@ -92,6 +92,7 @@ class UserController
 			if($errors == false)
 			{
 				$result = $user->addProfile($name,$sname,$phone,$country,$region,$city,$address,$index,$userId['id']);
+				header("Location: /");
 				
 			}
 		}
