@@ -13,7 +13,7 @@
 						<h3 class="title-description"><?php echo $product['title'];?></h3>
 
 						<div class="photo-desc">
-							<a href="#"><img src="img/desc_img.png" width="220px" height="220px"></a>
+							<a href="#"><img src="<?=Product::getImage($product['id']);?>" width="220px" height="220px"></a>
 						</div>
 
 						<div class="desc_info">
@@ -29,7 +29,7 @@
 
 							<div class="buy">
 							<span class="price_desc_title">Цена</span><br>
-							<span class="price_desc"><?php echo $product['price'];?> грн</span><br>
+							<span class="price_desc"><?php echo $product['price'];?> ₴</span><br>
 							<button name="buy" class="desc_buybtn">Купить</button>
 							</div>
 							<span class="number_product">Код товара:23134</span>

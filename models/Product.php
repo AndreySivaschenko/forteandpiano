@@ -4,6 +4,25 @@ class Product
 {
 	const SHOW_BY_DEFAULT = 6;
 
+	public static function getProductList()
+	{
+		$db = Db::getConnection();
+
+		$result = $db->query('SELECT `id`, `title`, `price`,`code`
+							  FROM `product` 
+							  ORDER BY `id` ASC');
+		$i = 0;
+		$productList = array();
+		while($row = $result->fetch()){
+			$productList[$i]['id']=$row['id'];
+			$productList[$i]['title']=$row['title'];
+			$productList[$i]['price']=$row['price'];
+			$productList[$i]['code']=$row['code'];
+			$i++;
+		}
+		return $productList;
+	}
+
 	public static function getLatestProducts($count = self::SHOW_BY_DEFAULT,$page = 1)
 	{
 		$count = intval($count);
@@ -135,5 +154,100 @@ class Product
 		$row = $result->fetch();
 
 		return $row['count'];
+	}
+	//Управление товарами
+	public function createProduct($options)
+	{
+		$db=Db::getConnection();
+
+		$sql = 'INSERT INTO `product`
+				(`title`,`price`,`category`,`scategory`,`info`,`description`,`rating`,`brand`,
+					`is_new`,`is_recommend`,`is_sale`,`availability`,`status`,`code`)
+				VALUES (:title,:price,:category,:scategory,:info,:description,0,:brand,
+					:is_new,:is_recommend,:is_sale,:availability,:status,:code)';
+		$result=$db->prepare($sql);
+		$result->bindParam(':title',$options['title'],PDO::PARAM_STR);
+		$result->bindParam(':price',$options['price'],PDO::PARAM_STR);
+		$result->bindParam(':category',$options['category_id'],PDO::PARAM_STR);
+		$result->bindParam(':scategory',$options['subcategory_id'],PDO::PARAM_STR);
+		$result->bindParam(':info',$options['info'],PDO::PARAM_STR);
+		$result->bindParam(':description',$options['description'],PDO::PARAM_STR);
+		$result->bindParam(':brand',$options['brand'],PDO::PARAM_STR);
+		$result->bindParam(':is_new',$options['is_new'],PDO::PARAM_INT);
+		$result->bindParam(':is_recommend',$options['is_recommended'],PDO::PARAM_INT);
+		$result->bindParam(':is_sale',$options['sale'],PDO::PARAM_INT);
+		$result->bindParam(':availability',$options['availability'],PDO::PARAM_INT);
+		$result->bindParam(':status',$options['status'],PDO::PARAM_INT);
+		$result->bindParam(':code',$options['code'],PDO::PARAM_STR);
+		if($result->execute())
+		{
+			return $db->lastInsertId();
+		}
+		return 0;
+	}
+
+	public function updateProductById($id, $options)
+	{
+		$db = Db::getConnection();
+
+		$sql = 'UPDATE `product`
+				SET
+					`title` = :title,
+					`price` = :price,
+					`category` = :category,
+					`scategory` = :scategory,
+					`info` = :info,
+					`description` = :description,
+					`brand` = :brand,
+					`is_new` = :is_new,
+					`is_recommend` = :is_recommend,
+					`is_sale` = :is_sale,
+					`availability` = :availability,
+					`status` = :status,
+					`code` = :code
+				WHERE `id` = :id';
+
+		$result = $db->prepare($sql);
+		$result->bindParam(':id',$id,PDO::PARAM_INT);
+		$result->bindParam(':title',$options['title'],PDO::PARAM_STR);
+		$result->bindParam(':price',$options['price'],PDO::PARAM_STR);
+		$result->bindParam(':category',$options['category_id'],PDO::PARAM_STR);
+		$result->bindParam(':scategory',$options['subcategory_id'],PDO::PARAM_STR);
+		$result->bindParam(':info',$options['info'],PDO::PARAM_STR);
+		$result->bindParam(':description',$options['description'],PDO::PARAM_STR);
+		$result->bindParam(':brand',$options['brand'],PDO::PARAM_STR);
+		$result->bindParam(':is_new',$options['is_new'],PDO::PARAM_INT);
+		$result->bindParam(':is_recommend',$options['is_recommended'],PDO::PARAM_INT);
+		$result->bindParam(':is_sale',$options['sale'],PDO::PARAM_INT);
+		$result->bindParam(':availability',$options['availability'],PDO::PARAM_INT);
+		$result->bindParam(':status',$options['status'],PDO::PARAM_INT);
+		$result->bindParam(':code',$options['code'],PDO::PARAM_STR);
+		return $result->execute();
+	
+
+	}
+
+	public function deleteProductById($id)
+	{
+		$db = Db::getConnection();
+
+		$sql = 'DELETE FROM `product`
+				WHERE `id` = :id';
+
+		$result=$db->prepare($sql);
+		$result->bindParam(':id',$id,PDO::PARAM_INT);
+		return $result->execute();
+	}
+
+	public static function getImage($id)
+	{
+		$noImage = 'no-image.jpg';
+
+		$path = '/upload/images/products/';
+
+		$pathToProductImage = $path.$id.'.jpg';
+		if(file_exists($_SERVER['DOCUMENT_ROOT'].$pathToProductImage))
+			return $pathToProductImage;
+		return $path.$noImage;
 	}
 }

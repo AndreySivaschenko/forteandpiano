@@ -47,7 +47,7 @@
 							<?php if($product['is_sale']):?>
 								<span class="sale">Sale</span>
 							<?php endif;?>
-								<a href="/product/<?php echo $product['id'] ?>"><img src="/template/img/desc_img.png" width="220px" height="220px"></a>
+								<a href="/product/<?php echo $product['id'] ?>"><img src="<?=Product::getImage($product['id']);?>" width="220px" height="220px"></a>
 							</div>
 								<div class="p-footer">
 										<h6><a href="/product/<?php echo $product['id'] ?>"><?php echo $product['title']." ".$product['id'];?></a> <span>by <?php echo $product['brand'];?></span></h6>
@@ -59,11 +59,11 @@
 									
 									<div class="p-footer-price clearfix">
 										<?php if(!$product['is_sale']):?>
-										<span class="price-lg"><?php echo $product['price'];?></span>
+										<span class="price-lg"><?php echo $product['price'];?>₴</span>
 									<?php endif;?>
 										<?php if($product['is_sale']):?>
-										<span class="price"><?php echo $product['price'];?></span>
-										<span class="price-new"><?php echo $product['price'];?></span>
+										<span class="price"><?php echo $product['price'];?>₴</span>
+										<span class="price-new"><?php echo $product['price'];?>₴</span>
 										<?php endif;?>
 										<a href="/cart/add/<?php echo $product['id'];?>	" class="right addCart">ADD TO CARD</a>
 									</div>
